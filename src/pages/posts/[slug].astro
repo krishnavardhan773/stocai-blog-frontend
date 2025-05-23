@@ -1,0 +1,18 @@
+---
+import BlogPost from '../../components/BlogPost.jsx';
+
+export async function getStaticPaths() {
+  const res = await fetch('https://stocai-blog-backend.onrender.com/api/blogs/');
+  const blogs = await res.json();
+
+  return blogs.map((blog) => ({
+    params: { slug: blog.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+---
+
+<main class="bg-gray-50 min-h-screen">
+  <BlogPost slug={slug} client:load />
+</main>
