@@ -1,0 +1,18 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header';
+import BlogPost from '../../components/BlogPost.jsx';
+import Footer from '../../components/Footer';
+
+const { slug } = Astro.params;
+---
+
+<Layout>
+  <div class="min-h-screen flex flex-col">
+    <Header client:load />
+    <main class="flex-grow bg-gray-50">
+      <BlogPost slug={slug} client:load />
+    </main>
+    <Footer client:load />
+  </div>
+</Layout>

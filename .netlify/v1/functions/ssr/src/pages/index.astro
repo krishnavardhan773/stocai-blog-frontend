@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import BlogList from '../components/BlogList';
+import Footer from '../components/Footer';
+---
+
+<Layout>
+  <div class="min-h-screen flex flex-col">
+    <Header client:load />
+    <main class="flex-grow bg-gray-50">
+      <BlogList client:load />
+    </main>
+    <Footer client:load />
+  </div>
+</Layout>
