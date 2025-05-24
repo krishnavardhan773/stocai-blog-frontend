@@ -1,18 +1,18 @@
 ---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header';
 import BlogPost from '../../components/BlogPost.jsx';
-
-export async function getStaticPaths() {
-  const res = await fetch('https://stocai-blog-backend.onrender.com/api/blogs/');
-  const blogs = await res.json();
-
-  return blogs.map((blog) => ({
-    params: { slug: blog.slug },
-  }));
-}
+import Footer from '../../components/Footer';
 
 const { slug } = Astro.params;
 ---
 
-<main class="bg-gray-50 min-h-screen">
-  <BlogPost slug={slug} client:load />
-</main>
+<Layout>
+  <div class="min-h-screen flex flex-col">
+    <Header client:load />
+    <main class="flex-grow bg-gray-50">
+      <BlogPost slug={slug} client:load />
+    </main>
+    <Footer client:load />
+  </div>
+</Layout>
